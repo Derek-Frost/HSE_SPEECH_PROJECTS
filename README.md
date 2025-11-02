@@ -15,7 +15,32 @@
 
 ## 📚 Оглавление
 
-1. [🎧 DeepSpeech2 ASR — Распознавание речи (CTC + KenLM)](#asr)
+1. [🎧 DeepSpeech2 ASR — Распознавание речи (CTC + KenLM)]
+
+## 🎧 DeepSpeech2 ASR
+
+> **End-to-End система автоматического распознавания речи**  
+> Архитектура: DeepSpeech2 (Conv + BiGRU + CTC)  
+> Поддержка Beam Search и внешней языковой модели KenLM
+
+**Основные возможности:**
+- Обучение на LibriSpeech (`train-clean-100`)
+- Поддержка `greedy`, `beam`, `beam + LM`
+- Интеграция с KenLM для улучшения WER
+- Гибкая настройка через Hydra
+- Метрики: WER / CER
+
+**Лучшие результаты (test):**
+| Decoder | WER ↓ | CER ↓ |
+|:--|--:|--:|
+| Greedy | 0.424 | 0.136 |
+| Beam (no LM) | 0.411 | 0.131 |
+| Beam + LM | **0.253** | **0.114** |
+
+🔗 **Проект:** [Открыть ветку `asr_project`](https://github.com/USERNAME/REPO_NAME/tree/ASR)
+
+🧩 **Ключевые технологии:** `PyTorch`, `CTC`, `KenLM`, `Hydra`, `LibriSpeech`, `SpecAugment`
+
 
 
 ---
