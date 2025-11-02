@@ -39,7 +39,7 @@
 
 🔗 **Проект:** [Открыть ветку `ASR`](https://github.com/Derek-Frost/HSE_SPEECH_PROJECTS/tree/ASR)
 
-🧩 **Ключевые технологии:** `PyTorch`, `CTC`, `KenLM`, `Hydra`, `LibriSpeech`, `SpecAugment`
+🧩 **Ключевые технологии:** `PyTorch`, `CTC`, `KenLM`, `Hydra`, `LibriSpeech`
 
 
 
