@@ -15,7 +15,7 @@
 
 ## 📚 Оглавление
 
-1. [🎧 DeepSpeech2 ASR — Распознавание речи (CTC + KenLM)]
+1. 🎧 DeepSpeech2 ASR — Распознавание речи (CTC + KenLM)
 
 ## 🎧 DeepSpeech2 ASR
 
