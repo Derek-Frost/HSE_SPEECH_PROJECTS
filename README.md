@@ -12,28 +12,36 @@
 
 ## 🏗️ Структура проекта
 
+```text
 ASR_project/
+│
 ├── src/
-│ ├── configs/asr/
-│ │ ├── experiment_small.yaml
-│ │ ├── data.yaml
-│ │ ├── model_small_5080.yaml
-│ │ ├── train.yaml
-│ │ └── decode_cpu.yaml
-│ ├── data/librispeech.py
-│ ├── features/featurizer.py
-│ ├── models/deepspeech.py
-│ ├── decoding/{beam_kenlm.py, greedy.py}
-│ ├── utils/{text.py, metrics.py, io.py}
-│ └── ...
+│   ├── configs/asr/
+│   │   ├── experiment_small.yaml        # основная hydra-конфигурация
+│   │   ├── data.yaml                    # пути к данным, алфавит, фичи
+│   │   ├── model_small_5080.yaml        # архитектура DeepSpeech2
+│   │   ├── train.yaml                   # параметры обучения
+│   │   └── decode_cpu.yaml              # настройки декодера
+│   │
+│   ├── data/librispeech.py              # класс датасета и коллатор
+│   ├── features/featurizer.py           # извлечение log-mel признаков
+│   ├── models/deepspeech.py             # реализация DeepSpeech2
+│   ├── decoding/
+│   │   ├── greedy.py                    # жадное декодирование
+│   │   └── beam_kenlm.py                # beam search + KenLM
+│   ├── utils/
+│   │   ├── text.py                      # алфавит, кодировка текстов
+│   │   ├── metrics.py                   # WER и CER
+│   │   └── io.py                        # сохранение/загрузка
+│   └── ...
 │
 ├── scripts/
-│ ├── prepare_librispeech.sh # скачивание и подготовка датасета
-│ ├── make_manifests.py # создание CSV-манифестов
-│ └── make_lm_corpus.py # генерация корпуса для языковой модели
+│   ├── prepare_librispeech.sh           # загрузка и подготовка LibriSpeech
+│   ├── make_manifests.py                # создание CSV-манифестов
+│   └── make_lm_corpus.py                # подготовка корпуса для LM
 │
-├── train.py # обучение модели
-├── inference.py # инференс и оценка
+├── train.py                             # обучение модели
+├── inference.py                         # инференс и оценка
 ├── requirements.txt
 └── README.md
 
