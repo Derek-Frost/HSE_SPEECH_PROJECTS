@@ -37,7 +37,7 @@
 | Beam (no LM) | 0.411 | 0.131 |
 | Beam + LM | **0.253** | **0.114** |
 
-🔗 **Проект:** [Открыть ветку `asr_project`](https://github.com/USERNAME/REPO_NAME/tree/ASR)
+🔗 **Проект:** [Открыть ветку `asr_project`]([https://github.com/USERNAME/REPO_NAME/tree/ASR](https://github.com/Derek-Frost/HSE_SPEECH_PROJECTS/tree/ASR))
 
 🧩 **Ключевые технологии:** `PyTorch`, `CTC`, `KenLM`, `Hydra`, `LibriSpeech`, `SpecAugment`
 
