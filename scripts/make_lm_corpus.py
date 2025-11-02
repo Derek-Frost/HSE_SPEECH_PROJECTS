@@ -36,7 +36,7 @@ def main():
         for t in texts:
             f.write(t + "\n")
 
-    print(f"✅ Saved {len(texts)} lines to {args.out}")
+    print(f"Saved {len(texts)} lines to {args.out}")
 
 
 if __name__ == "__main__":
