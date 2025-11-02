@@ -1,0 +1,18 @@
+root: ./train-clean-100
+manifests:
+  train: ${root}/manifests/train.csv
+  dev:   ${root}/manifests/dev.csv
+  test:  ${root}/manifests/test.csv
+sample_rate: 16000
+n_mels: 80
+win_ms: 25
+hop_ms: 10
+specaugment:
+  freq_mask: 2
+  time_mask: 2
+  F: 15
+  T: 50
+text:
+  alphabet: "abcdefghijklmnopqrstuvwxyz' "
+  lowercase: true
+  remove_punct: true

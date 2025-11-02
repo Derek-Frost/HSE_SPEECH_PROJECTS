@@ -1,0 +1,10 @@
+defaults:
+  - data
+  - model_full_5080
+  - train
+  - decode_cpu
+  - _self_
+
+output_dir: ${oc.env:OUTPUT_DIR, ./outputs}
+seed: 7777
+

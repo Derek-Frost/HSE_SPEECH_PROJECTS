@@ -1,0 +1,8 @@
+model:
+  type: deepspeech
+  rnn:
+    type: gru
+    bidirectional: true
+    layers: 6
+    hidden: 896
+    dropout: 0.25

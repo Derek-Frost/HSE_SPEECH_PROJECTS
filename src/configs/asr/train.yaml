@@ -1,0 +1,14 @@
+seed: 42
+optimizer: {name: adamw, lr: 0.001, weight_decay: 1.0e-4}
+train:
+  epochs: 30
+  batch_size: 8
+  batch_frames: 40000
+  accumulate_steps: 2
+  grad_clip: 5.0
+  amp: true
+  log_interval: 50
+  eval_interval: 1000
+  num_workers: 4
+  pin_memory: true
+  prefetch_factor: 2

@@ -1,0 +1,7 @@
+beam:
+  use: true
+  beam_size: 64
+  alpha: 1.0
+  beta: 1.0
+  lm_path: ./models/librispeech_4gram.arpa.bin
+  unigrams_path: ./data/unigrams.txt
