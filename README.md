@@ -1,46 +1,66 @@
-<h1 align="center">HiFi-GAN Vocoder (Mel → Waveform)</h1>
+# HiFi-GAN Vocoder (Mel → Waveform)
 
-<p align="center">
-  <b>Данный проект реализует нейросетевой вокодер HiFi-GAN, предназначенный для преобразования мел-спектрограмм в аудиосигнал (waveform).
-Проект выполнен в рамках учебного задания по TTS и охватывает полный цикл обучения и инференса вокодера.</b><br>
-</p>
+## 📖 Описание проекта
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3.10%2B-blue?logo=python">
-  <img src="https://img.shields.io/badge/PyTorch-2.x-orange?logo=pytorch">
-  <img src="https://img.shields.io/badge/License-MIT-green">
-</p>
+Данный проект реализует **нейросетевой вокодер HiFi-GAN**, предназначенный для преобразования **мел-спектрограмм в аудиосигнал (waveform)**.  
+Проект выполнен в рамках учебного задания по TTS и охватывает **полный цикл обучения и инференса вокодера**.
+
+В реализации:
+- используется архитектура **HiFi-GAN** (Generator + Adversarial Discriminators),
+- обучение проводится на датасете **LJSpeech**,
+- применяется **единый код извлечения mel-спектрограмм** для обучения и инференса,
+- качество оценивается **субъективно**, по аудио-примерам на разных эпохах обучения.
+
+Проект фокусируется именно на **вокодере**, а не на полной TTS-системе.
+
+---
+
+## 🧠 Архитектура
+
+Используется архитектура **HiFi-GAN**, включающая:
+
+- **Generator**
+  - принимает mel-спектрограмму,
+  - использует каскад upsampling-блоков,
+  - residual-блоки с дилатациями,
+  - генерирует waveform во временной области.
+
+- **Discriminators**
+  - **Multi-Period Discriminator (MPD)** — анализ периодической структуры сигнала,
+  - **Multi-Scale Discriminator (MSD)** — анализ сигнала на разных временных масштабах.
+
+Обучение проводится в **GAN-постановке** с дополнительными регуляризирующими потерями.
 
 ---
 
-## 📚 Оглавление
+## 🏗️ Структура проекта
 
-1. 🎧 DeepSpeech2 ASR — Распознавание речи (CTC + KenLM)
-
-## 🎧 DeepSpeech2 ASR
-
-> **End-to-End система автоматического распознавания речи**  
-> Архитектура: DeepSpeech2 (Conv + BiGRU + CTC)  
-> Поддержка Beam Search и внешней языковой модели KenLM
-
-**Основные возможности:**
-- Обучение на LibriSpeech (`train-clean-100`)
-- Поддержка `greedy`, `beam`, `beam + LM`
-- Интеграция с KenLM для улучшения WER
-- Гибкая настройка через Hydra
-- Метрики: WER / CER
-
-**Лучшие результаты (test):**
-| Decoder | WER ↓ | CER ↓ |
-|:--|--:|--:|
-| Greedy | 0.424 | 0.136 |
-| Beam (no LM) | 0.411 | 0.131 |
-| Beam + LM | **0.253** | **0.114** |
-
-🔗 **Проект:** [Открыть ветку `ASR`](https://github.com/Derek-Frost/HSE_SPEECH_PROJECTS/tree/ASR)
-
-🧩 **Ключевые технологии:** `PyTorch`, `CTC`, `KenLM`, `Hydra`, `LibriSpeech`
-
-
-
----
+```text
+hifigan_project/
+│
+├── src/
+│   ├── model/
+│   │   ├── hifigan.py              # Generator, MPD, MSD
+│   │   ├── modules.py              # ResBlocks, Upsample-блоки
+│   │   └── losses.py               # adversarial, feature matching, mel loss
+│   │
+│   ├── data/
+│   │   ├── datasets.py             # LJSpeechDataset
+│   │   └── collate.py              # паддинг и батчинг
+│   │
+│   ├── trainer/
+│   │   └── trainer.py              # цикл обучения
+│   │
+│   └── utils/
+│       ├── audio.py                # загрузка wav + mel_spectrogram
+│       ├── checkpoint.py           # сохранение моделей
+│       └── seed.py                 # фиксация сидов
+│
+├── configs/
+│   └── hifigan_ljspeech.yaml       # конфигурация эксперимента
+│
+├── train.py                        # обучение HiFi-GAN
+├── infer.py                        # инференс одного чекпоинта
+├── run_infer_checkpoints.py        # инференс всех чекпоинтов
+├── requirements.txt
+└── README.md
