@@ -82,7 +82,7 @@
 - `gen_epoch_15.wav`
 - `gen_epoch_20.wav`
 
-🔗 **Проект:** [Открыть ветку `HiFiGAN`](https://github.com/Derek-Frost/HSE_SPEECH_PROJECTS/tree/HiFi_GAN)
+🔗 **Проект:** [Открыть ветку `HiFiGAN`](https://github.com/Derek-Frost/HSE_SPEECH_PROJECTS/tree/HiFI_GAN)
 
 🧩 **Ключевые технологии:** `PyTorch`, `HiFi-GAN`, `GAN`, `TTS`, `Vocoder`, `LJSpeech`
 
